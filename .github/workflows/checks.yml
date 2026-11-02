@@ -1,0 +1,21 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  hooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ShellCheck
+        run: shellcheck claude-code/hooks/*.sh tests/*.sh
+      - name: Hook tests
+        run: bash tests/hooks.test.sh
+      - name: JSON files parse
+        run: for f in $(git ls-files '*.json'); do jq empty "$f" || exit 1; done

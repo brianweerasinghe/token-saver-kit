@@ -1,0 +1,8 @@
+# Token Saver Kit · "deep" profile for hard tasks.
+# Copy next to config.toml as ~/.codex/deep.config.toml, then run:
+#   codex --profile deep
+# Use it for architecture, planning and gnarly debugging, then go back to the
+# default profile for the build-out.
+
+model = "gpt-6.1-sol"
+model_reasoning_effort = "high"

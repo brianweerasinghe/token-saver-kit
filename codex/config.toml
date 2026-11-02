@@ -1,0 +1,13 @@
+# Token Saver Kit · copy to ~/.codex/config.toml (or merge into yours).
+# Checked against the Codex config reference, October 2026.
+
+# Default to OpenAI's most efficient Codex model for everyday work.
+# For hard tasks, run: codex --profile deep   (see deep.config.toml)
+model = "gpt-6-luna"
+
+# Reasoning tokens are billed like output. "medium" suits routine edits;
+# raise it per session for tricky work instead of paying for it every time.
+model_reasoning_effort = "medium"
+
+# Shorter reasoning summaries in the session.
+model_reasoning_summary = "concise"

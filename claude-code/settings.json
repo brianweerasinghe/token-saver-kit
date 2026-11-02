@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./node_modules/**)",
+      "Read(./dist/**)",
+      "Read(./build/**)",
+      "Read(./.next/**)",
+      "Read(./out/**)",
+      "Read(./coverage/**)",
+      "Read(./.venv/**)",
+      "Read(./venv/**)",
+      "Read(./**/__pycache__/**)",
+      "Read(./package-lock.json)",
+      "Read(./pnpm-lock.yaml)",
+      "Read(./yarn.lock)",
+      "Read(./poetry.lock)",
+      "Read(./Cargo.lock)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/block-big-reads.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/filter-test-output.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
